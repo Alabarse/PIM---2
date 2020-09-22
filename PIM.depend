@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1600733716 source:d:\mateus\estudoc\pim\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
