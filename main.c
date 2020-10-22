@@ -2,7 +2,23 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include<stdbool.h>
 
+_Bool StringsIguais(const char s1 [], const char s2 [], const char s3[], const char s4[]) {
+     int i = 0;
+     while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && s3[i] == s4[i] && s3[i] != '\0' && s4[i] != '\0') {
+            ++i;
+     }
+
+     if (s1[i] == '\0' && s2[i] == '\0' && s3[i] == '\0' && s4[i] == '\0') {
+        printf("Certo");
+        return true;
+     }else {
+         printf("Errado");
+         return false;
+     }
+
+}
 
 void agendar() {
     FILE * agendamentos;
@@ -19,13 +35,13 @@ void cadastroPacientes() {
     char cpf[13];
     char cep[9];
     printf("Nome:");
-    scanf("%s", &nome);
+    scanf("%s", nome);
     printf("Idade:");
-    scanf("%d", &idade);
+    scanf("%i", &idade);
     printf("CPF:");
-    scanf("%s", &cpf);
+    scanf("%s", cpf);
     printf("CEP:");
-    scanf("%s", &cep);
+    scanf("%s", cep);
     printf("========== Cadastrando Paciente ========== \n");
 
     FILE * cadastrosDePacientes;
@@ -180,6 +196,7 @@ void cadastros() {
 void menuPrincipal() {
 
 
+
     system("cls");
     int escolha;
     printf("1-Visualizar Relatórios\n");
@@ -213,6 +230,7 @@ default:
 void telaInicial() {
 
 
+
     system("cls");
     printf("Digite sua escolha\n");
     printf("1-Login\n");
@@ -238,6 +256,7 @@ void telaInicial() {
 
 }
 void cadastroMedicos() {
+
 
 
     system("cls");
@@ -282,15 +301,22 @@ void cadastroMedicos() {
 void telaDeLogin() {
 
     system("cls");
-    char usuario, senha;
- printf("==================\n");
+    char usuario[30];
+    char senha[30];
+    bool contaExistente = false;
+ printf("=========LOGIN=========\n");
     printf(" Login:");
-    scanf("%s", &usuario);
+    scanf("%s", usuario);
     printf(" Senha:");
-    scanf("%s", &senha);
-printf("==================\n");
+    scanf("%s", senha);
+printf("=========LOGIN=========\n");
+
+system("cls");
 
 // Manipulação arquivo TXT
+
+FILE *logSenha;
+logSenha = fopen("D:\\Mateus\\EstudoC\\LogSenha.txt", "r");
 
 FILE *logLogin;
 logLogin = fopen("D:\\Mateus\\EstudoC\\LogLogin.txt", "r");
@@ -300,9 +326,44 @@ if (logLogin == NULL) {
     exit(0);
 }else {
     char login[30];
-    while(fgets(login, 30, logLogin) != NULL) {
-        printf("%s", login);
-    }
+    int i= 0;
+    while(fscanf(logLogin,"%s", &login) != usuario) {
+            while (login[i] == usuario [i] && login[i] != '\0' && usuario[i] != '\0') {
+                printf("%s \n", login);
+                ++i;
+
+                 if (login[i] == '\0' && usuario[i] == '\0') {
+                    printf("Logado com sucesso \n");
+                    system("pause");
+                    menuPrincipal();
+            }else {
+                printf("erro \n");
+            }
+            }
+        }
+        if (login[i] == '\0' && usuario[i] == '\0') {
+                    printf("Logado com sucesso \n");
+            }else {
+                printf("erro \n");
+            }
+
+           /* if (login[i] == '\0' && usuario[i] == '\0') {
+                    printf("Logado com sucesso\n");
+                    printf("Usuario:%s \n", usuario);
+                    printf("Login:%s \n", login);
+                    printf("Senha:%s \n", senha);
+                    printf("PalavraP:%s \n", palavraP);
+                    i = 0;
+                    jumper = true;
+                }else {
+                    printf("Erro no login\n");
+                    printf("Usuario:%s \n", usuario);
+                    printf("Login:%s \n", login);
+                    printf("Senha:%s \n", senha);
+                    printf("PalavraP:%s \n", palavraP);
+                    i = 0;
+                } */
+
     fclose(logLogin);
 }
 
@@ -310,24 +371,29 @@ if (logLogin == NULL) {
 
 void telaDeCadastro() {
     system("cls");
-    char usuario[30], senha[30], nacionalidade[30];
-    printf("==================\n");
+    char usuario[30], senha[30];
+    printf("=========Cadastro=========\n");
     printf(" Login:");
-    scanf("%s", &usuario);
+    scanf("%s", usuario);
     printf(" Senha:");
-    scanf("%s", &senha);
-    printf(" Nacionalidade:");
-    scanf("%s", &nacionalidade);
-printf("==================\n");
+    scanf("%s", senha);
+printf("=========Cadastro=========\n");
 
 // Manipulação arquivo TXT
 FILE *logLogin;
 
 logLogin = fopen ("D:\\Mateus\\EstudoC\\LogLogin.txt", "a");
-fprintf(logLogin, "Usuario: %s \n", &usuario);
-fprintf(logLogin, "Senha: %s \n", &senha);
-fprintf(logLogin, "Nacionalidade: %s \n", &nacionalidade);
+fprintf(logLogin, "%s\n", &usuario);
 fclose(logLogin);
+
+FILE *logSenha;
+logSenha = fopen("D:\\Mateus\\EstudoC\\LogSenha.txt", "a");
+fprintf(logSenha, "%s\n", &senha);
+fclose(logSenha);
+
+    system("cls");
+    getchar();
+    telaDeLogin();
 
 
 }
@@ -371,5 +437,5 @@ void telaDeRelatorio() {
 int main() {
     setlocale(LC_ALL, "Portuguese_Brazil");
     telaInicial();
-    menuPrincipal();
+
 }
