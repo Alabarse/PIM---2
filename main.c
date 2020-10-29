@@ -2,23 +2,43 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
-#include<stdbool.h>
+#include <stdbool.h>
 
-_Bool StringsIguais(const char s1 [], const char s2 [], const char s3[], const char s4[]) {
-     int i = 0;
-     while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && s3[i] == s4[i] && s3[i] != '\0' && s4[i] != '\0') {
-            ++i;
-     }
+char senha[30];
 
-     if (s1[i] == '\0' && s2[i] == '\0' && s3[i] == '\0' && s4[i] == '\0') {
-        printf("Certo");
-        return true;
-     }else {
-         printf("Errado");
-         return false;
-     }
+void verificarSenhaLogin() {
+
+bool senhaIncorreta = false;
+
+FILE *logSenha;
+logSenha = fopen("D:\\Mateus\\EstudoC\\LogSenha.txt", "r");
+
+if (logSenha == NULL){
+    printf("Impossivel abrir o log de senhas!");
+    getchar();
+    exit(0);
+}else {
+    char palavraPasse[30];
+    int i = 0;
+    while(fscanf(logSenha, "%s", palavraPasse) != senha) {
+        if (strcmp (palavraPasse,senha) == 0) {
+            printf("Logado com sucesso...");
+            getchar();
+            menuPrincipal();
+            }else if (strcmp(palavraPasse,senha) != 0 && i == 30) {
+            printf("Senha incorreta! Pressione ENTER para continuar...");
+            getchar();
+            getchar();
+            telaInicial();
+        }
+        i++;
+      }
+    }
 
 }
+
+
+
 
 void agendar() {
     FILE * agendamentos;
@@ -302,7 +322,6 @@ void telaDeLogin() {
 
     system("cls");
     char usuario[30];
-    char senha[30];
     bool contaExistente = false;
  printf("=========LOGIN=========\n");
     printf(" Login:");
@@ -320,6 +339,7 @@ logSenha = fopen("D:\\Mateus\\EstudoC\\LogSenha.txt", "r");
 
 FILE *logLogin;
 logLogin = fopen("D:\\Mateus\\EstudoC\\LogLogin.txt", "r");
+
 if (logLogin == NULL) {
     printf("Não foi possivel abrir o arquivo");
     getchar();
@@ -328,41 +348,34 @@ if (logLogin == NULL) {
     char login[30];
     int i= 0;
     while(fscanf(logLogin,"%s", &login) != usuario) {
-            while (login[i] == usuario [i] && login[i] != '\0' && usuario[i] != '\0') {
-                printf("%s \n", login);
+        if(strcmp(login,usuario) == 0) {
+            printf("Verificando senha... \n");
+            verificarSenhaLogin();
+        }else if (strcmp(login,usuario) != 0 && i == 30) {
+            printf("Usuario incorreto! Pressione ENTER para continuar...");
+            getchar();
+            getchar();
+            telaInicial();
+        }
+        i++;
+    }
+
+   /*         while (login[i] == usuario[i] && login[i] != '\0' && usuario[i] != '\0') {
                 ++i;
 
                  if (login[i] == '\0' && usuario[i] == '\0') {
-                    printf("Logado com sucesso \n");
-                    system("pause");
-                    menuPrincipal();
-            }else {
-                printf("erro \n");
-            }
+                    printf("Verificando senha... \n");
+                    verificarSenhaLogin();
+                }else {
+
+                }
             }
         }
         if (login[i] == '\0' && usuario[i] == '\0') {
                     printf("Logado com sucesso \n");
             }else {
                 printf("erro \n");
-            }
-
-           /* if (login[i] == '\0' && usuario[i] == '\0') {
-                    printf("Logado com sucesso\n");
-                    printf("Usuario:%s \n", usuario);
-                    printf("Login:%s \n", login);
-                    printf("Senha:%s \n", senha);
-                    printf("PalavraP:%s \n", palavraP);
-                    i = 0;
-                    jumper = true;
-                }else {
-                    printf("Erro no login\n");
-                    printf("Usuario:%s \n", usuario);
-                    printf("Login:%s \n", login);
-                    printf("Senha:%s \n", senha);
-                    printf("PalavraP:%s \n", palavraP);
-                    i = 0;
-                } */
+            } */
 
     fclose(logLogin);
 }
