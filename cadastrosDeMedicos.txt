@@ -1,0 +1,12 @@
+Nome:Moriel 
+Idade: 56 
+Nacionalidade:Brasileiro 
+ 
+Nome:Maribel 
+Idade: 98 
+Nacionalidade:Argentino 
+ 
+Nome:Seu 
+Idade: 19 
+Nacionalidade:Brasileiro 
+ 
