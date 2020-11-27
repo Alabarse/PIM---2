@@ -1,6 +1,0 @@
-
-nota:2
-feedback: ada
-
-nota:6
-feedback: meio fraco

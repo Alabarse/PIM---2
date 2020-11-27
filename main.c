@@ -210,7 +210,7 @@ void mostrarPacientes() {
         cadastroDePacientes = fopen("cadastrosDePacientes.txt", "r");
 
         if (cadastroDePacientes == NULL) {
-            printf("Não foi possivel abrir o arquivo");
+            printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
             getchar();
             exit(0);
         }else {
@@ -264,7 +264,7 @@ void mostrarMedicos(){
         cadastroDeMedicos = fopen("cadastrosDeMedicos.txt", "r");
 
         if (cadastroDeMedicos == NULL) {
-            printf("Não foi possivel abrir o arquivo");
+            printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
             getchar();
             exit(0);
         }else {
@@ -448,7 +448,7 @@ logSenha = fopen("LogSenha.txt", "r");
 logLogin = fopen("LogLogin.txt", "r");
 
 if (logLogin == NULL) {
-    printf("Não foi possivel abrir o arquivo");
+    printf("ARQUIVO VAZIO, FAVOR CRIAR CADASTROS A SER ACESSADOS!");
     getchar();
     exit(0);
 }else {
@@ -580,7 +580,7 @@ system("cls");
 
  RelatorioCURITIBA = fopen("RelatorioCuritiba.txt", "a");
  if (RelatorioCURITIBA == NULL) {
-    printf("Não foi possivel abrir o arquivo!");
+    printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
  }else {
     printf("Avalie de 0 a 10!\n");
     scanf("%i", &avaliacaoPR);
@@ -618,7 +618,7 @@ char caractereRJ;
 RelatorioRJ = fopen("RelatorioRio.txt", "a");
 
 if (RelatorioRJ == NULL) {
-    printf("Não foi possivel abrir o arquivo!");
+    printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
  }else {
     printf("Avalie de 0 a 10!\n");
     scanf("%i", &avaliacaoRJ);
@@ -655,7 +655,7 @@ int linhaSP = 0;
 RelatorioSP = fopen("RelatorioSP.txt", "a");
 
 if (RelatorioSP == NULL) {
-    printf("Não foi possivel abrir o arquivo!");
+    printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
  }else {
     printf("Avalie de 0 a 10!\n");
     scanf("%i", &avaliacaoSP);
@@ -762,7 +762,7 @@ void listarRelatorioPR() {
 RelatorioCURITIBA = fopen("RelatorioCuritiba.txt", "r");
 
         if (RelatorioCURITIBA == NULL) {
-            printf("Não foi possivel abrir o arquivo");
+            printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
             getchar();
             exit(0);
         }else {
@@ -786,7 +786,7 @@ void listarRelatorioSP() {
 RelatorioSP = fopen("RelatorioSP.txt", "r");
 
         if (RelatorioSP == NULL) {
-            printf("Não foi possivel abrir o arquivo");
+            printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
             getchar();
             exit(0);
         }else {
@@ -812,7 +812,7 @@ void listarRelatorioRJ() {
 RelatorioRJ = fopen("RelatorioRio.txt", "r");
 
         if (RelatorioRJ == NULL) {
-            printf("Não foi possivel abrir o arquivo");
+            printf("ARQUIVO VAZIO, FAVOR CRIAR INFORMAÇOES A SER ACESSADAS!");
             getchar();
             exit(0);
         }else {

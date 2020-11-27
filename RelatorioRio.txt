@@ -1,9 +1,0 @@
-
-nota:1
-feedback: Pessimo
-
-nota:4
-feedback: so tem risole
-
-nota:6
-feedback: Bom

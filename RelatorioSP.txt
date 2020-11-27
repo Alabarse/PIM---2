@@ -1,6 +1,0 @@
-
-nota:3
-feedback: Ruim
-
-nota:2
-feedback: podia ser melhor viu..
